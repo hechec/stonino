@@ -1,4 +1,5 @@
 <?php
+if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 /*
  * To change this template, choose Tools | Templates
@@ -8,19 +9,21 @@
 /**
  * Description of Index
  *
- * @author user
+ * @author Harvey Jake G. Opena
+ * 		   May 2012
  */
-class Home extends CI_Controller {
+class Home extends MY_Controller {
 
-    
+	/**
+	 *  loads the home page
+	 * 
+	 */
     public function index() {
         $this->load->helper('url');
         $this->load->library('form_validation');
-        $data = array('title' => 'Welcome to CI Homepage');
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/menu');
-        $this->load->view('home');
-        $this->load->view('templates/footer');
+		$data['body'] = $this->load->view('home', '', true);
+		$data['title'] = 'Sto. Nino Homepage';
+		$this->load->view('template', $data);
     }
     
 }

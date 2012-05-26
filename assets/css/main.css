@@ -1,0 +1,187 @@
+body {
+	font-family: "proxima-nova","Trebuchet MS","Helvetica",sans-serif;
+}
+* {
+    margin:0;
+    padding:0;
+}
+.wrapper {
+    width: 950px;
+    margin: 0 auto;
+    padding: 0px 4px;
+    min-height: 475px;
+}
+.header {
+    background: url("../images/texture-dark-grain.jpg") repeat scroll center top #323232;
+    height: 100px;
+    position: relative
+}
+
+.header .content {
+	width: 950px;
+	margin: 0px auto;
+	color: #FFF;
+}
+
+.header .content .header-title {
+	float: left;
+	font-size: 18px;
+	padding:65px 0px 0px 0px;
+}
+
+.header .content .right-header {
+	float: right;
+}
+
+.header .content .right-header .login-area {
+	font-size: 14px;
+	text-align: right;
+	margin: 10px 0px 0px 0px;
+	min-height: 25px;
+}
+
+.header .content .right-header .login-area .login-btn, .btn {
+	background-color: #019AD2;
+    background-image: -moz-linear-gradient(#33BCEF, #019AD2);
+    background-repeat: repeat-x;
+	border-left-color: #057ED0;
+	border-right-color: #057ED0;
+	border-top-color: #057ED0;
+	border: 1px #057ED0 solid;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+	color: #FFFFFF;
+	border-radius: 4px;
+	padding: 1px 4px;
+	cursor: pointer;
+}
+
+.header .content .right-header .login-area .login-btn:hover, .btn:hover {
+	color:#ddd;
+}
+
+.header .content .right-header .login-area .input{
+	background-color: #CCCCCC;
+    color: #999999;
+    cursor: auto;
+    z-index: 1;
+    -moz-transition: all 0.2s ease-in-out 0s;
+    border: 0 none;
+    border-radius: 10px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2) inset;
+    color: #666666;
+    font-size: 12px;
+    height: 22px;
+    padding: 6px 27px 6px 12px;
+    width: 163px;
+	
+}
+
+.header .content .right-header .login-area .input:focus {
+	background-color: #FFFFFF;
+}
+
+.header .content .right-header .login-area .welcome {
+	font-size: 14px;
+}
+
+.header .content .right-header .login-area .welcome span a{
+	 color: #999999; 
+	 text-decoration: none;
+	 margin-left: 10px;
+}
+
+.header .content .right-header .login-area .welcome span a:hover {
+	color: #FFFFFF;
+}
+
+.header .content .right-header .login-area .password-span {
+	margin-left: 10px;
+}
+
+.header .content .header-nav {
+	margin: 30px 0px 0px 0px;
+	text-align: right;
+}
+.header .content .header-nav ul {
+	font-size: 18px;
+    margin: 0;
+    text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.5);
+}
+.header .content .header-nav ul li {
+    display: inline;
+    margin: 0 0 0 20px;
+    padding: 0;
+}
+
+.header .content .header-nav ul li a {
+    color: #999999;
+	text-decoration: none;
+}
+
+.header .content .header-nav ul li a:hover {
+    color: #FFFFFF;
+}
+
+.header .content .header-nav ul.links li {
+    list-style-type: none;
+}
+
+.footer {
+	background: url("../images/texture-dark-grain.jpg") repeat scroll center top #323232;
+	clear: both;
+}
+
+.footer .content {
+	width: 950px;
+	margin: 0px auto;
+	color: #CCCCCC;
+    padding: 20px 0;
+}
+
+.footer .content .line-border {
+	background: url("../images/line-dark.gif") repeat-x scroll center top transparent;
+	text-align: right;
+}
+
+#dialog{
+	
+	/* css3 drop shadow */
+	-webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+	-moz-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+	
+	/* css3 border radius */
+	-moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+	z-index: 20;
+	background:#fff;
+	/* styling of the dialog box, i have a fixed dimension for this demo */ 
+	
+	/* make sure it has the highest z-index */
+	position:absolute; 
+
+	/* hide it by default */
+	display:none;
+	padding: 10px;
+}
+
+#dialog-overlay {
+
+	/* set it to fill the whil screen */
+	width:100%; 
+	height:100%;
+	
+	/* transparency for different browsers */
+	filter:alpha(opacity=50); 
+	-moz-opacity:0.5; 
+	-khtml-opacity: 0.5; 
+	opacity: 0.5; 
+	background:#000; 
+	z-index: 10;
+	/* make sure it appear behind the dialog box but above everything else */
+	position:absolute; 
+	top:0; left:0; 
+	
+	
+	/* hide it by default */
+	display:none;
+}

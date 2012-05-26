@@ -18,22 +18,11 @@
             width: 300px;
         }
     </style>
+	<script type='text/javascript' src='<?php echo base_url(); ?>assets/js/stonino.js'></script>  
 </head>
 <div>
-    
     <div class="left-container">left</div>
     <div class="right-container">
-         
-        <?php echo form_open('formControllers/loginForm'); ?>
-
-        <h5>Username</h5>
-        <input type="text" name="username" value=""  />
-         <?php echo form_error('username') ?>  
-        <h5>Password</h5>
-        <input type="text" name="password" value="" />
-         <?php echo form_error('password') ?>  
-        <div><input type="submit" value="Submit" /></div>
-
-        </form>        
+       upcoming events..      
     </div>
 </div>

@@ -1,0 +1,114 @@
+#loading {
+	margin: 100px auto;
+}
+
+#calendar {
+	width: 700px;
+	margin: 30px auto;
+}
+
+#dialog .dialog-close {
+	background: url('../images/xnormal.png');
+	cursor: pointer;
+    float: right;
+    height: 13px;
+    width: 14px;
+    margin-bottom: 5px;
+}
+
+#dialog #dialog-content {
+	clear: both;
+}
+
+#add-event-one {
+	float: left;
+}
+
+#add-event-one input {
+	background-color: rgba(173, 211, 46, 0.99);
+    border: 1px solid #83A611;
+    color: #445900;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.95);
+    font-size: 14px;
+    padding: 3px 5px;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+#add-event-one input:hover {
+	background-color: rgba(173, 211, 46, 0.8);
+	border-color: #83A611;
+	cursor: pointer;
+}
+
+.create-event-form .input {
+    padding: 6px 8px 5px;
+    border-radius: 4px 4px 4px 4px;
+    border: 1px #ccc solid;
+}
+
+.create-event-form .title {
+	width: 350px
+}
+
+.create-event-form {
+	margin: 10px;
+}
+
+.create-event-form .create-event-btn {
+	margin-top: 20px;
+	text-align: center;
+}
+
+.create-event-form .event-update-btn {
+	display: none;
+}
+
+.create-event-form .twitter-anywhere-tweet-box-editor:focus, .create-event-form .input:focus{
+	border-color: #56B4EF;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) inset, 0 0 8px rgba(82, 168, 236, 0.6);
+}
+
+.create-event-form .twitter-anywhere-tweet-box-editor:hover, .create-event-form .input:hover {
+	border: 1px solid #56B4EF;
+}
+
+.create-event-form .twitter-anywhere-tweet-box-editor {
+	font-family: "proxima-nova","Trebuchet MS","Helvetica",sans-serif;
+	border: 1px #ccc solid;
+    min-height: 32px !important;
+    height:75px;
+    width: 350px;
+    max-width: 350px;
+    max-height: 75px;
+    overflow: hidden;
+    color: #000000;
+    font-size: 13px;
+    height: 56px;
+    line-height: 18px;
+    outline: medium none;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding: 6px 8px 5px;
+    white-space: pre-wrap;
+    width: 482px;
+    word-wrap: break-word;
+    border-radius: 4px 4px 4px 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) inset, 0 1px 0 #FFFFFF;
+    resize: vertical;
+}
+
+.create-event-form .create-event-error, .create-event-form .create-event-error2 {
+	font-size: 13px;
+	color: #B81231;
+	margin-top: 8px;
+}
+
+.create-event-form .create-event-error {
+	display: none;
+}
+
+.create-event-form .create-event-desc-label {
+	margin: 10px 0px 4px 4px;		
+}
+
