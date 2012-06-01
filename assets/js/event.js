@@ -5,6 +5,7 @@ $(document).ready(function(){
 		 * create event validation 
 		 */
 		$('#create-event').click(function() {
+			
 			var title = $('#create-event-title').val();
 			var description = $('#create-event-description').val();
 			var start_date = $('#startdate').val();
@@ -29,6 +30,14 @@ $(document).ready(function(){
 			}
 			else {
 				$('#create-event-startdate-error').html('');
+			}
+			
+			if( end_date < start_date ) {
+				$('#create-event-enddate-error').html('Invalid end date.');
+				isValid = false;
+			}
+			else {
+				$('#create-event-enddate-error').html('');
 			}
 			
 			if( $.trim(description) == '') {

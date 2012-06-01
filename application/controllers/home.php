@@ -14,17 +14,81 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
  */
 class Home extends MY_Controller {
 
+	public function __construct(){
+		parent::__construct();
+		
+		$this->load->library( array('form_validation','pagination') );
+		
+		$this->load->helper( array('form', 'url') );  		
+		
+		$this->load->model( array('events_model', 'priests_model') );		
+		
+	}
+	
 	/**
 	 *  loads the home page
 	 * 
 	 */
     public function index() {
-        $this->load->helper('url');
-        $this->load->library('form_validation');
-		$data['body'] = $this->load->view('home', '', true);
+       
+		$homedata = $this->getHomeData(); 
+		
+		$data['body'] = $this->load->view('home', $homedata, true);
 		$data['title'] = 'Sto. Nino Homepage';
 		$this->load->view('template', $data);
     }
+	
+	private function getHomeData() {
+
+		$config['base_url'] = base_url().'index.php/home/index';
+		$config['total_rows'] = $this->priests_model->record_count();
+		$config['per_page'] = 3;
+		$config["uri_segment"] = 3;
+		//$choice = $config["total_rows"] / $config["per_page"];
+	    //$config["num_links"] = round($choice);
+		
+		$this->pagination->initialize($config);
+		$page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+		
+		$homedata["results"] = $this->priests_model->getPreviousPriests($config["per_page"], $page);
+		$homedata["links"] = $this->pagination->create_links();
+		$homedata["events"] = $this->events_model->getUpcomingEvents();
+		
+		return $homedata;
+		
+	}
+	
+	/**
+	 *  add a priest
+	 * 
+	 */
+	public function addpriest() {
+	 	
+		$config['upload_path'] = './assets/images/priests/';
+		$config['allowed_types'] = 'gif|jpg|png|jpeg';
+
+		$this->load->library('upload', $config);
+		
+		if ( ! $this->upload->do_upload()) {
+			if($_FILES['userfile']['name'] == "") {
+				$this->priests_model->save($this->input->post('fullname'), $this->input->post('startdate'), $this->input->post('enddate'));
+			}else
+				echo $this->upload->display_errors();
+				
+		}
+		else {
+			$data = $this->upload->data();
+			$file_id = $this->priests_model->save($this->input->post('fullname'), $this->input->post('startdate'), $this->input->post('enddate'), $data['file_name']);
+			if($file_id) {
+				list($name, $ext) = explode('.', $data['file_name']);
+				rename("./assets/images/priests/".$data['file_name'], "./assets/images/priests/".$file_id.".".$ext);
+				redirect('home');
+	        }
+			else
+				echo "Database query error. Please contact your system developer.";
+		}
+		
+	}
     
 }
 

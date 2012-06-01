@@ -70,7 +70,6 @@ class Events extends MY_Controller {
 						'details' => $this->input->post('details'),
 						'start_date' => $this->input->post('start_date'),
 						'end_date' => $this->input->post('end_date'),	
-						'created_by' => $this->session->userdata('username'),
 					  );
 		$eventID = $this->input->post('eventID');
 	 	$this->events_model->update($event, $eventID);
@@ -86,6 +85,8 @@ class Events extends MY_Controller {
 		  $event = $this->events_model->getEvent( $_POST['id'] );
 		  $event['type'] = self::UPDATE_FORM;
 		  $isCreator = $this->session->userdata('username') == $event['created_by'];
+		  if( !$isCreator )
+		  	$isCreator =  $this->session->userdata('usertype') == 'admin';
 		  echo json_encode( array('html' => $this->load->view('forms/event_add', $event, true), 
 		  						  'isCreator' => $isCreator,
 		  						  'creator' => $event['created_by'] 
@@ -99,7 +100,15 @@ class Events extends MY_Controller {
 	  	  echo json_encode(array('html' => $this->load->view('forms/event_add', $event, true), 'isLoggedIn' => $loginstatus));
 	  }
 	  
-	
+	 /**
+	  * 
+	  * 
+	  */
+	  public function deleteEvent($eventID) {
+	  	  echo $eventID;
+		  $this->events_model->delete($eventID);
+		  redirect('events');
+	  }
 }
 
 

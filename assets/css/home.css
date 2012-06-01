@@ -1,0 +1,215 @@
+.clearfix:after {
+	content: ".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
+}
+ 
+.clearfix {
+	display: inline-block;
+}
+ 
+html[xmlns] .clearfix {
+	display: block;
+}
+ 
+* html .clearfix {
+	height: 1%;
+}
+
+/**
+ * Left content
+ * 
+ */
+.left-container {
+    float: left;
+    width: 600px;
+    border: 1px #ccc solid;
+    padding: 10px;
+}
+
+.current-priest-div {
+	text-align: center;
+}
+
+.current-priest-div .image-div {
+	margin: 10px auto;
+}
+
+.current-priest-div .image-div img {
+	height: 110px;
+	width: 120px;
+	margin-bottom: 10px;
+}
+
+.add-priest-span {
+	float: right;
+}
+
+.prev-priest-header {
+	padding: 12px;
+	background-color: #DBDBDB;
+}
+
+.prev-priest-label {
+	font-size: 18px;
+}
+
+.add-priest-span input {
+    border: none;
+    color: #000000;
+    background: none;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.95);
+    font-size: 14px;
+    padding: 2px 4px;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.add-priest-span input:hover {
+	color: green;
+	cursor: pointer;
+}
+
+
+.prev-priest-div {
+	padding: 10px 10px 10px 50px;
+}
+
+.prev-priest-div .image-div {
+	float:left;
+}
+
+.prev-priest-div .info-div {
+	float:left;
+	padding: 15px 0px 0px 15px;
+}
+
+.prev-priest-div .info-div p i {
+	font-size: 14px;
+}
+
+.prev-priest-div .image-div img {
+	height: 80px;
+	width: 90px;
+}
+
+.add-priest-form {
+	margin: 10px;
+}
+
+.add-priest-form form .input {
+	padding: 6px 8px 5px;
+    border-radius: 4px 4px 4px 4px;
+    border: 1px #ccc solid;
+   
+}
+
+.add-priest-form form .fullname {
+	width: 350px;
+}
+
+.add-priest-form .create-priest-desc-label {
+	margin: 10px 0px 4px 0px;		
+}
+
+.startend {
+	margin: 0 auto;
+	margin-top: 10px;
+}
+
+.startend tr td input {
+	width: 160px;
+}
+
+
+.add-priest-form form .input:focus {
+	border-color: #56B4EF;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) inset, 0 0 8px rgba(82, 168, 236, 0.6);
+}
+
+.add-priest-form form .input:hover {
+	border: 1px solid #56B4EF;
+}
+
+.add-priest-form .photo-preview {
+	width: 110px;
+	height: 100px;
+}
+
+.add-priest-form .photo-preview img {
+	width: 100%;
+	height: 100%;
+}
+
+.priest-submit-p {
+	padding-top: 20px;
+	text-align: center;
+}
+
+/**
+ * Right content
+ *  
+ */
+
+.right-container {
+	padding: 15px 0px 15px 0px;
+    float: right;
+    width: 300px;
+    display: block;
+    border: 1px #ccc solid;
+}
+        
+.right-container .upcoming-event-item {
+	display: block;
+    padding: 10px 5px 5px 5px;
+}
+
+.right-container .upcoming-event-item .event-date {
+    background: url("../images/homeUpcomingDate_bg.png") no-repeat scroll left top transparent;
+    color: #6A6454;
+    display: block;
+    font-family: Georgia,"Times New Roman",Times,serif;
+    font-size: 10px;
+    padding-top: 6px;
+    padding-bottom: 7px;
+    text-align: center;
+    text-transform: uppercase;
+    width: 51px;
+    float: left;
+    
+}
+
+.right-container .upcoming-event-item .event-date strong {
+	color: #178B97;
+    display: block;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 6px;
+   
+}
+
+.right-container .upcoming-event-item .event-info {
+	display: block;
+    width: 220px;
+    float: left;
+    margin-left: 15px;
+    padding-top: 5px;
+    
+}
+
+.right-container .upcoming-event-item .event-info h2{
+	background: none repeat scroll 0 0 #FFFFFF;
+    color: #178B97;
+    display: inline;
+    font-size: 14px;
+    padding: 1px 2px;
+    font-weight: bold;
+}
+
+.right-container .upcoming-event-item .event-info p {
+	padding-top: 5px;
+	font-size: 13px;
+}

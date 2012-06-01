@@ -26,7 +26,7 @@
 				</tr>
 			</table>
 			<p class="create-event-btn">
-				<?php echo form_submit(array('class'=>'btn', 'value'=> $type == 'NEW' ? 'CREATE':'UPDATE', 'id' => 'create-event' ))?>
+				<?php echo form_submit(array('class'=>'btn', 'value'=> $type == 'NEW' ? 'CREATE':'UPDATE', 'id' => 'create-event' ))?> <?php if( $type == 'UPDATE' ) echo anchor('events/deleteEvent/'.$eventID, 'delete'); ?>
 			</p>
 			<input type="text" name="eventID" value="<?php if(isset($eventID)) echo $eventID?>" style="display: none" />
 		<?php form_close(); ?>

@@ -32,6 +32,7 @@
 			resetCreateEvent( '' );
 		});
 		
+		
 		/**
 		 *  dialog close 
 		 */
