@@ -6,8 +6,9 @@
  */
 ?>
 
-<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/home.js" ></script>
-<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/ajaxfileupload.js" ></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/stonino.js" ></script>
+<script type='text/javascript' src='<?php echo base_url();?>assets/js/jquery-1.5.2.min.js'></script>
+
 
 <div>
     <div class="left-container">
@@ -36,7 +37,13 @@
 	    				<img src="<?php echo base_url()."assets/images/priests/".$filename  ?>" />
 	    			</div>
 	    			<div class="info-div">
-	    				<h4><?php echo  $priest->fullname ?></h4>
+	    				<h4><?php echo  $priest->fullname ?> 
+	    					<?php if($loginstatus === TRUE && $this->session->userdata('usertype') === 'admin'): ?> 	
+	    						<span class="edit-priest-span">
+	    								<a href="javascript:void()" class="edit-priest" id="<?php echo $priest->id; ?>">edit</a> 
+	    								<?php echo anchor('home/deletePriest/'.$priest->id, 'del', array('class' => 'delete-priest')); ?>
+	    					<?php endif; ?>	
+	    				</h4>
 	    				<p><i><?php echo $priest->start_date." - ".$priest->end_date ?></i></p>
 	    			</div>
 	    		</div>
@@ -65,10 +72,6 @@
     </div>
 </div>
 
-<div id="dialog-overlay"></div>
-<div id="dialog">
-	<div class="dialog-close"></div>
-	<div id = "dialog-content">
-		<?php $this->load->view('forms/priest_add') ?>
-	</div>
-</div>
+<?php
+	$this->load->view('includes/dialog.php')
+?>

@@ -52,11 +52,40 @@ class Priests_model extends CI_Model {
 	    return $data;	  	
 	  }
 	  
+	  /**
+	   * 
+	   * 
+	   */
 	  public function record_count() {
 	  	  $query = "select * from ".$this->tbl_priest;		  
 	      return count($this->db->query($query)->result_array());
 	  }
-	
+	  
+	  /**
+	   * 
+	   * 
+	   */
+	  public function getPriest($priestID) {
+	  	  $query = "select * from ".$this->tbl_priest." where id = ".$priestID;
+		  $arr = $this->db->query($query)->result_array();	
+		  foreach($arr as $r) 
+			  return array(
+			  	'id' => $r['id'],
+			  	'fullname' => $r['fullname'],
+			  	'startdate' => $r['start_date'],
+			  	'enddate' => $r['end_date'],
+			  	'photo' => $r['photo_filename']
+			  );
+	  }	
+
+	  /**
+	   * 
+	   * 
+	   */
+	   public function delete($priestID) {
+	   	    $query = "delete from ".$this->tbl_priest." where id = ".$priestID;
+		    $this->db->query($query);
+	   }
 }
 
 

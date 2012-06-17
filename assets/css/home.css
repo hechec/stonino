@@ -85,6 +85,13 @@ html[xmlns] .clearfix {
 .prev-priest-div .info-div {
 	float:left;
 	padding: 15px 0px 0px 15px;
+	width: 420px;
+}
+
+.info-div .edit-priest-span {
+	float: right;
+	font-size: 14px;
+	font-weight: normal;	
 }
 
 .prev-priest-div .info-div p i {
@@ -148,6 +155,13 @@ html[xmlns] .clearfix {
 	padding-top: 20px;
 	text-align: center;
 }
+
+.add-priest-form .priest-preview img {
+	width: 110px;
+	height: 100px;
+}
+
+
 
 /**
  * Right content

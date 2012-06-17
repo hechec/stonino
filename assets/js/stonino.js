@@ -1,6 +1,34 @@
 	
 	$(document).ready(function(){
 		
+		$('#add-event-one-button').click(function(){
+			resetCreateEvent( '' );
+		});
+		
+		/**
+		 *  dialog close 
+		 */
+		
+		$('#dialog .dialog-close').click(function(){
+			$('#dialog').hide();
+			$('#dialog-overlay').hide();
+		});
+		
+		$('#add-priest-button').click(function(){
+			 newPriest();
+		});
+		
+		$('.edit-priest').click(function(){
+			var priestID = $(this).attr('id');
+			viewPriest(priestID);
+		});
+		
+		$('.delete-priest').click(function(){
+			var priestID = $(this).attr('id');
+			var r = confirm('Are you sure you want to delete? '+priestID); 
+			return r;
+		});
+	
 		/**
 		 *  initialize event calendar 
 		 */
@@ -26,20 +54,6 @@
 				}
 				else $('#loading').hide();
 			}
-		});
-		
-		$('#add-event-one-button').click(function(){
-			resetCreateEvent( '' );
-		});
-		
-		
-		/**
-		 *  dialog close 
-		 */
-		
-		$('#dialog .dialog-close').click(function(){
-			$('#dialog').hide();
-			$('#dialog-overlay').hide();
 		});
 		
 	});
@@ -106,7 +120,34 @@
 		
 	}
 	
+	function newPriest() {
+		$.ajax({
+	        type: "POST",
+	        url: "home/newPriest",
+	        dataType: 'json',
+	        success: function(data){
+	            $('#dialog #dialog-content').html(data.html);	
+	            showDialog();
+	        }
+	   });
+	}
+	
+	function viewPriest(priestID) {
+		
+		$.ajax({
+	        type: "POST",
+	        url: "home/editPriest",
+	        dataType: 'json',
+	        data: {id: priestID},
+	        success: function(data){
+	            $('#dialog #dialog-content').html(data.html);	
+	            showDialog(); 
+	        }
+	    });
+	}
+
 	function showDialog() {
+		
 		var maskHeight = $(document).height();
 		var maskWidth = $(window).width();
 		var dialogTop = (maskHeight / 2) - ($('#dialog').height() / 2);

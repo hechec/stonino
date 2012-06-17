@@ -25,6 +25,7 @@
 						<li class=""><?php echo anchor('home', 'Home') ?></li>
 						<li class=""><?php echo anchor('records', 'Records') ?></li>
 						<li class=""><?php echo anchor('events', 'Events') ?></li>
+						<li class=""><?php echo anchor('charts', 'Charts') ?></li>
 					</ul>
 	    		</div>
 	    	</div>

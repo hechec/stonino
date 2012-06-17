@@ -13,10 +13,7 @@
 
 <div id="add-event-one"><input type="button" value="Add Event" id="add-event-one-button" /></div>
 <div id='calendar'></div>
-<div id="dialog-overlay"></div>
-<div id="dialog">
-	<div class="dialog-close"></div>
-	<div id = "dialog-content">
-		<?php $this->load->view('forms/event_add') ?>
-	</div>
-</div>
+
+<?php
+	$this->load->view('includes/dialog.php')
+?>

@@ -13,16 +13,18 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
  * 		   May 2012
  */
 class Home extends MY_Controller {
-
+	
+	const NEW_FORM = 'NEW';
+	const UPDATE_FORM = 'UPDATE';
+	
 	public function __construct(){
 		parent::__construct();
 		
-		$this->load->library( array('form_validation','pagination') );
+		$this->load->library( array('form_validation', 'pagination'));
 		
-		$this->load->helper( array('form', 'url') );  		
+		$this->load->helper( array('form', 'url'));  
 		
-		$this->load->model( array('events_model', 'priests_model') );		
-		
+		$this->load->model( array('priests_model', 'events_model'));	
 	}
 	
 	/**
@@ -30,11 +32,10 @@ class Home extends MY_Controller {
 	 * 
 	 */
     public function index() {
-       
 		$homedata = $this->getHomeData(); 
-		
 		$data['body'] = $this->load->view('home', $homedata, true);
 		$data['title'] = 'Sto. Nino Homepage';
+		$data['update'] = null;
 		$this->load->view('template', $data);
     }
 	
@@ -89,6 +90,42 @@ class Home extends MY_Controller {
 		}
 		
 	}
+	
+	/**
+	 * 
+	 * 
+	 */
+	 public function newPriest() {
+		  $priest['type'] = self::NEW_FORM;
+	  	  echo json_encode(array( 'html' => $this->load->view('forms/priest_add', $priest, true) ));
+	  }
+	
+	/**
+	 * 
+	 * 
+	 */
+	 public function editPriest() {
+	 	 $priest = $this->priests_model->getPriest( $_POST['id'] );
+		 $priest['type'] = self::UPDATE_FORM;
+	 	 echo json_encode( array('html' => $this->load->view('forms/priest_add', $priest, true)));
+	 }
+	 
+	 /**
+	  * 
+	  * 
+	  */
+	  public function updatepriest() {
+	  	
+	  }
+	 
+	 /**
+	  * 
+	  * 
+	  */
+	  public function deletePriest($priestID) {
+	  	  $this->priests_model->delete($priestID);
+		  redirect('home');
+	  }
     
 }
 

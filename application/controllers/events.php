@@ -31,7 +31,6 @@ class Events extends MY_Controller {
         $this->load->library('form_validation');
 		$data['body'] = $this->load->view('events', '', true);
 		$data['title'] = 'Sto. Nino Events';
-		$data['update'] = null;
 		$this->load->view('template', $data);		
     }
 	
@@ -109,6 +108,7 @@ class Events extends MY_Controller {
 		  $this->events_model->delete($eventID);
 		  redirect('events');
 	  }
+	  
 }
 
 

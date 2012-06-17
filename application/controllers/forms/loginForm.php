@@ -33,7 +33,7 @@ class LoginForm extends CI_Controller {
 			$this->session->set_userdata($data);
 			
 		}
-		redirect('home/index');
+		redirect('home');
 	}
     
 	/**
@@ -41,7 +41,7 @@ class LoginForm extends CI_Controller {
 	 */
 	function logout() {  
         $this->session->sess_destroy();  
-        redirect('home/index');
+        redirect('home');
     }  
 	
 }

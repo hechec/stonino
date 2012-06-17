@@ -7,7 +7,15 @@
 		 });
 			
 		$('#add-priest-button').click(function(){
-			 showDialog();
+			 $.ajax({
+		        type: "POST",
+		        url: "home/newPriest",
+		        dataType: 'json',
+		        success: function(data){
+		            $('#dialog #dialog-content').html(data.html);	
+		            showDialog();
+		        }
+		   });
 		});
 		
 		/**
@@ -17,6 +25,11 @@
 		$('#dialog .dialog-close').click(function(){
 			$('#dialog').hide();
 			$('#dialog-overlay').hide();
+		});
+		
+		$('.edit-priest').click(function(){
+			var priestID = $(this).attr('id');
+			viewPriest(priestID);
 		});
 	
 		$('#priest_submit').click(function(){
@@ -53,3 +66,35 @@
 		});
 	
 	});
+	
+	function newPriest() {
+		$.ajax({
+	        type: "POST",
+	        url: "home/newPriest",
+	        dataType: 'json',
+	        success: function(data){
+	            $('#dialog #dialog-content').html(data.html);	
+	            showDialog();
+	        }
+	   });
+	}
+	
+	function showDialog() {
+		
+		var maskHeight = $(document).height();
+		var maskWidth = $(window).width();
+		var dialogTop = (maskHeight / 2) - ($('#dialog').height() / 2);
+		var dialogLeft = (maskWidth / 2) - ($('#dialog').width() / 2);
+		
+        var top = $(document).scrollTop() + (($(window).height() - $('#dialog').height())/2 );      
+         
+		$('#dialog-overlay').css({
+			height : maskHeight,// + $(document).scrollTop(),
+			width : maskWidth
+		}).fadeIn(500);
+	
+		$('#dialog').css({
+			top : top-50,
+			left : dialogLeft,
+		}).fadeIn(500);
+	}

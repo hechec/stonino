@@ -1,6 +1,9 @@
 
 <?php if($loginstatus === TRUE){ ?> 
-	<p class="welcome">Welcome <?php echo $this->session->userdata('username').' ('.$this->session->userdata('usertype').')'; ?> <span><?php echo anchor('forms/loginForm/logout', 'Logout') ?></span></p>
+	<p class="welcome">
+		Welcome <?php echo $this->session->userdata('username').' ('.$this->session->userdata('usertype').')'; ?> 
+		<span><?php echo anchor('forms/loginForm/logout', 'Logout') ?></span>
+	</p>
 <?php } else{?>
 	<?php echo form_open('forms/loginForm/validate_credentials'); ?>
 	<span>Username: <input id="" class="input" name="username" type="text" spellcheck="false" autocomplete="off"></span>
