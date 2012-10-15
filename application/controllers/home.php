@@ -73,6 +73,7 @@ class Home extends MY_Controller {
 		if ( ! $this->upload->do_upload()) {
 			if($_FILES['userfile']['name'] == "") {
 				$this->priests_model->save($this->input->post('fullname'), $this->input->post('startdate'), $this->input->post('enddate'));
+				redirect('home');
 			}else
 				echo $this->upload->display_errors();
 				

@@ -1,0 +1,76 @@
+/**
+ * 	 css for all record pages
+ */
+
+.clearfix:after {
+	content: ".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
+}
+ 
+.clearfix {
+	display: inline-block;
+}
+ 
+html[xmlns] .clearfix {
+	display: block;
+}
+ 
+* html .clearfix {
+	height: 1%;
+}
+
+.records-div{
+	margin: 30px auto;
+	width: 800px;
+}
+
+.records-div .search-div {
+	width: 50%;
+	margin: auto;
+}
+
+.records-div .hr {
+	width: 500px;	
+	width: 100%;
+}
+
+.records-div .res-count {
+	float: left;
+}
+
+.records-div .add-div {
+	float: right;
+}
+
+.records-div .add-div input {
+	padding: 4px 6px;
+}
+
+.records-div .results-all {
+	margin: 30px 15px;
+}
+
+.records-div .results-all .result-one-even {
+	width: 100%;
+	padding: 5px;	
+	background-color: #DDD;
+}
+
+.records-div .results-all .result-one-odd {
+	padding: 5px;	
+	width: 100%;
+}
+
+.records-div .results-all .info {
+	float: left;	
+}
+
+.records-div .results-all .res-nav {
+	float: right;
+	font-size: 13px;
+	margin: 0px 10px;
+}

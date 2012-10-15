@@ -15,19 +15,23 @@
     </style>
     <header class="header">
     	<div class="content"> 
-    		<div class="header-title">STO. NINO CHURCH RECORD SYSTEM</div>
+    		<div class="header-title">
+    			<p>STO. NINO CHURCH RECORD SYSTEM</p>
+    			<div class="header-nav">
+	    			<ul class="links">
+						<li class=""><?php echo anchor('home', 'Home') ?></li>
+						<li class=""><?php echo anchor('search', 'Records') ?></li>
+						<li class=""><?php echo anchor('events', 'Events') ?></li>
+						<li class=""><?php echo anchor('charts', 'Statistics') ?></li>
+					</ul>
+	    		</div>
+    		</div>
+    		
     		<div class="right-header">
     			<div class="login-area">
     				<?php $this->load->view('forms/login.php') ?>
     			</div>
-	    		<div class="header-nav">
-	    			<ul class="links">
-						<li class=""><?php echo anchor('home', 'Home') ?></li>
-						<li class=""><?php echo anchor('records', 'Records') ?></li>
-						<li class=""><?php echo anchor('events', 'Events') ?></li>
-						<li class=""><?php echo anchor('charts', 'Charts') ?></li>
-					</ul>
-	    		</div>
+	    		
 	    	</div>
     	</div>
     </header>    

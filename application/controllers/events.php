@@ -53,7 +53,7 @@ class Events extends MY_Controller {
 						'start_date' => $this->input->post('start_date'),
 						'end_date' => $this->input->post('end_date'),	
 						'created_by' => $this->session->userdata('username'),
-						'created_on' => time(),					
+						'created_on' => NULL,					
 					  );
 	 	$this->events_model->save($event);
 		redirect('events');
@@ -86,7 +86,7 @@ class Events extends MY_Controller {
 		  $isCreator = $this->session->userdata('username') == $event['created_by'];
 		  if( !$isCreator )
 		  	$isCreator =  $this->session->userdata('usertype') == 'admin';
-		  echo json_encode( array('html' => $this->load->view('forms/event_add', $event, true), 
+		  echo json_encode( array('html' => $this->load->view('forms/event_form', $event, true), 
 		  						  'isCreator' => $isCreator,
 		  						  'creator' => $event['created_by'] 
 						          ));
@@ -96,7 +96,7 @@ class Events extends MY_Controller {
 		  $loginstatus =  $this->session->userdata('is_logged_in');
 	  	  $this->load->library('form_validation');
 		  $event['type'] = self::NEW_FORM;
-	  	  echo json_encode(array('html' => $this->load->view('forms/event_add', $event, true), 'isLoggedIn' => $loginstatus));
+	  	  echo json_encode(array('html' => $this->load->view('forms/event_form', $event, true), 'isLoggedIn' => $loginstatus));
 	  }
 	  
 	 /**
