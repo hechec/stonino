@@ -10,7 +10,7 @@ class Add extends  MY_Controller {
 			
 		$this->load->helper( array('form', 'url'));  
 		
-		$this->load->model( array('records/person_model'));	
+		$this->load->model( array('person_model'));	
 	}
 	
 	public function index() {

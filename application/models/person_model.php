@@ -50,7 +50,7 @@ class Person_model extends CI_Model {
 	}
 	 
 	public function search($query) {
-		$string = "SELECT * from person where CONCAT( firstname, ' ', lastname ) like '%".$query."%';";	
+		$string = "SELECT * from person where CONCAT( firstname, ' ', middlename, ' ', lastname ) like '%".$query."%';";	
 		$results =  $this->db->query($string)->result_array(); 			
 		$persons = array();
 		foreach ($results as $result) {

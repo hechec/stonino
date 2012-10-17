@@ -1,0 +1,13 @@
+
+
+.record-title {
+	text-align: center;
+	background-color: #CCCCCC;
+	padding: 3px;
+	margin-top: 1px;
+}
+
+.record-title:hover {
+	cursor: pointer;
+	font-weight: bold;
+}
