@@ -5,6 +5,7 @@
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/profile.js" ></script>
 <script type='text/javascript' src='<?php echo base_url();?>assets/js/jquery/jquery-1.5.2.min.js'></script>
  
+ 
 <table>
 	<tr>
 		<td>
@@ -80,7 +81,9 @@
 </div>
 
 <div class="record-title" id="confirmation"> Confirmation </div>
-<div class="confirmation" style="display: none">add/view</div>
+<div class="confirmation" style="display: none">
+	<div style=" width: 946px; margin: 0px auto;" id="confirmation-div"> <?php echo $confirmation ?> </div>
+</div>
 
 <div class="record-title" id="marriage"> Marriage </div>
 

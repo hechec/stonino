@@ -8,7 +8,7 @@ class Baptismal extends MY_Controller {
 		
 		$this->load->library( array('form_validation'));
 		
-		$this->load->helper( array('form', 'url'));  
+		$this->load->helper( array('form', 'url', 'my_helper'));  
 		
 		$this->load->model( array('baptismal_model', 'baptismal_godparent_model'));	
 	}
@@ -19,14 +19,14 @@ class Baptismal extends MY_Controller {
 		$person['baptismal'] = $this->baptismal_model->get($_POST['id']);	
 		
 		$godparents = $this->baptismal_godparent_model->get($_POST['id']);
-		$person['baptismal_godparent_1'] = $this->extractGodparent($godparents, 1); 
-		$person['baptismal_godparent_2'] = $this->extractGodparent($godparents, 2);
+		$person['baptismal_godparent_1'] = extractGodparent($godparents, 1); 
+		$person['baptismal_godparent_2'] = extractGodparent($godparents, 2);
 		
 		$html = $this->load->view('forms/baptismal_form', $person, true);
 		echo json_encode( array('html' => $html) );
 	}
 	
-	public function saveBaptismal() {
+	public function save() {
 		
 		$baptismal = array(
 							'id' => $_POST['id'],
@@ -58,9 +58,10 @@ class Baptismal extends MY_Controller {
 			array_push($godparent, $g2);
 		}
 								
-		
-		if( $_POST['action'] == "add" )
+		if( $_POST['action'] == "add" ) {
 			$this->baptismal_model->save($baptismal);
+			$this->baptismal_godparent_model->save($godparent);
+		}
 		else {
 			$this->baptismal_model->update($baptismal, $_POST['id']);
 			$this->baptismal_godparent_model->update($godparent, $_POST['id']);
@@ -68,26 +69,30 @@ class Baptismal extends MY_Controller {
 		
 		
 		$godparents = $this->baptismal_godparent_model->get($_POST['id']);
-		$person['baptismal_godparent_1'] = $this->extractGodparent($godparents, 1); 
-		$person['baptismal_godparent_2'] = $this->extractGodparent($godparents, 2);
+		$person['baptismal_godparent_1'] = extractGodparent($godparents, 1); 
+		$person['baptismal_godparent_2'] = extractGodparent($godparents, 2);
 		
 		$person['id'] = $_POST['id'];
 		$person['baptismal'] = $this->baptismal_model->get($_POST['id']);
-		$baptismal = $this->load->view('records/baptismal', $person, true);
+		$baptismalView = $this->load->view('records/baptismal', $person, true);
 		
-		echo json_encode( array( 'html' => $baptismal, 'action' => $_POST['action'] ) );
+		echo json_encode( array( 'html' => $baptismalView, 'action' => $_POST['action'] ) );
 	}
 
-	public function extractGodparent($godparents, $n) {
-		for( $i = 1; $i <= count($godparents); $i++ ) {
-			if( $i === $n ) {
-				return array(
-							'fullname' => $godparents[$i-1]['fullname'],
-							'residence' => $godparents[$i-1]['residence'],
+	public function save2($id) {
+		echo $this->input->post('bap_minister')." - ".$this->input->post('bap_book_number')." - ".$this->input->post('bap_page_number');
+		$baptismal = array(
+							'id' => $id,
+							'baptism_date' => $this->input->post('baptism_date'),
+							'legitimacy' => $this->input->post('bap_legitimacy'),
+							'minister' => $this->input->post('bap_minister'),
+							'remarks' => $this->input->post('bap_remarks'),
+							'book_number' => $this->input->post('bap_book_number'),
+							'page_number' => $this->input->post('bap_page_number'),
+							'line_number' => $this->input->post('bap_line_number'),
 							);
-			}
-		}
-		return null;	
+		$this->baptismal_model->save($baptismal);						
 	}
+
 	
 }

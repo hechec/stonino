@@ -10,7 +10,7 @@ class Profile extends MY_Controller {
 		
 		$this->load->library( array('form_validation'));
 		
-		$this->load->helper( array('form', 'url'));  
+		$this->load->helper( array('form', 'url', 'my_helper'));  
 		
 		$this->load->model( array('person_model', 'parent_model', 'baptismal_model', 'baptismal_godparent_model'));	
 	}
@@ -22,20 +22,22 @@ class Profile extends MY_Controller {
 		$profile['person'] = $this->person_model->get($pid);
 		
 		$parents = $this->parent_model->getParents($pid);
-		$profile['mother'] = Profile::extractParent($parents, Profile::MOTHER);
-		$profile['father'] = Profile::extractParent($parents, Profile::FATHER);
+		$profile['mother'] = extractParent($parents, Profile::MOTHER);
+		$profile['father'] = extractParent($parents, Profile::FATHER);
 		
 		$person['id'] = $pid;
 		$person['baptismal'] = $this->baptismal_model->get($pid);
 		$godparents = $this->baptismal_godparent_model->get($pid);
-		$person['baptismal_godparent_1'] = Profile::extractGodparent($godparents, 1); 
-		$person['baptismal_godparent_2'] = Profile::extractGodparent($godparents, 2);
+		$person['baptismal_godparent_1'] = extractGodparent($godparents, 1); 
+		$person['baptismal_godparent_2'] = extractGodparent($godparents, 2);
 		
 		if( isset($person['baptismal']) )
 			$profile['baptismal'] = $this->load->view('records/baptismal', $person, true);
 		else
 			$profile['baptismal'] = $this->load->view('forms/baptismal_form', $person, true);
 			
+		$profile['confirmation'] = $this->load->view('forms/confirmation_form', $person, true);
+		
 		$data['body'] = $this->load->view('records/profile', $profile, true);
 		$data['title'] = 'Sto. Nino Forms';
 		$this->load->view('template', $data);
@@ -58,8 +60,8 @@ class Profile extends MY_Controller {
 		
 		$parents = $this->parent_model->getParents($pid);
 		
-		$profile['mother'] = Profile::extractParent($parents, Profile::MOTHER);
-		$profile['father'] = Profile::extractParent($parents, Profile::FATHER);
+		$profile['mother'] = extractParent($parents, Profile::MOTHER);
+		$profile['father'] = extractParent($parents, Profile::FATHER);
 		
 		$data['body'] = $this->load->view('forms/person_form', $profile, true);
 		$data['title'] = 'Sto. Nino Forms';
@@ -112,39 +114,6 @@ class Profile extends MY_Controller {
 		$this->parent_model->update($pid, $parents);	  
 		
 		redirect('profile/index/'.$pid);
-	}
-	
-	public static function extractParent($parents, $var) {
-		$flag = false;
-		$p = null;
-		foreach($parents as $parent) {
-			if( $parent['gender'] == $var ) {
-				$p = array(
-						'fullname' => $parent['fullname'],
-						'residence' => $parent['residence'],
-					);
-				$flag = true;
-			}	
-		}
-		if(!$flag) {
-			$p = array(
-						'fullname' => '',
-						'residence' => '',
-					);
-		}	
-		return $p;
-	}
-	
-	public static function extractGodparent($godparents, $n) {
-		for( $i = 1; $i <= count($godparents); $i++ ) {
-			if( $i === $n ) {
-				return array(
-							'fullname' => $godparents[$i-1]['fullname'],
-							'residence' => $godparents[$i-1]['residence'],
-							);
-			}
-		}
-		return null;	
 	}
 	
 }

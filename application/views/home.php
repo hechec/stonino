@@ -15,7 +15,7 @@
     	<div class="current-priest-div">
     		<div class="image-div">
     			<img src="<?php echo base_url(); ?>assets/images/no-image.jpg" />
-    			<h4>Fr. Michael Gadicho</h4>
+    			<h4>Firstname M.I. Lastname</h4>
     			<p><i>2010 - present</i></p>
     		</div>
     	</div>

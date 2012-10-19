@@ -21,7 +21,8 @@ class Baptismal_godparent_model extends CI_Model {
 	 *  
 	 */
 	public function save($godparent) {
-		$this->db->insert($this->tbl_baptismal_godparent, $godparent);
+		foreach ($godparent as $g) 
+			$this->db->insert($this->tbl_baptismal_godparent, $g);
 	}
 	
 	public function update($godparents, $id) {
