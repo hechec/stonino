@@ -16,14 +16,14 @@
 			<?php echo anchor('profile/add', 'add'); ?>
 		</div>
 	</div>
-	<hr class="hr"/>
+	<hr class="hr" style ="clear: both"/>
 	
 	<p id="sample"></p>
 	<div class="results-all">
 				
 	</div>	
 	
-	<hr class="hr"/>
+	<hr class="hr" />
 	<div class="">
 		<div class="res-count">Results: 0</div>
 	</div>
